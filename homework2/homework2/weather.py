@@ -8,10 +8,10 @@ class WeatherPublisher(Node):
     def __init__(self):
         super().__init__('weather_publisher')
         self.publisher_ = self.create_publisher(String, 'weather_info', 10)
-        timer_period = 1.0  # 10秒ごとに天気情報を表示
+        timer_period = 1.0  # 1秒ごとに天気情報を表示
         self.timer = self.create_timer(timer_period, self.publish_weather_info)
         self.api_key = '387c1a9825674184050a1f5a269bc9cb'  # OpenWeatherMapから取得したAPIキーはここに入力
-        self.location = 'aaaaa,JP'  # 天気を確認したい場所の地名をここで指定
+        self.location = 'Narashino,JP'  # 天気を確認したい場所の地名をここで指定
 
     def fetch_weather_info(self):
         url = f'http://api.openweathermap.org/data/2.5/weather?q={self.location}&appid={self.api_key}&lang=ja&units=metric' #パラメータ付与したURLにより、上記で指定した都市における現在の天気を取得するAPIをコールする
