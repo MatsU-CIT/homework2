@@ -11,7 +11,7 @@
 
 ### APIキーの導入方法
 ①　下記のリンクより「OpenWeatherMap」のサイトにアクセス  
-    - [https://openweathermap.org/](https://openweathermap.org/)  
+　　- [https://openweathermap.org/](https://openweathermap.org/)  
 ②　サインアップ
 
 ### 実行例
