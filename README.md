@@ -12,7 +12,14 @@
 ### APIキーの導入方法
 ①　下記のリンクより「OpenWeatherMap」のサイトにアクセス  
 　　- [https://openweathermap.org/](https://openweathermap.org/)  
-②　サインアップ
+②　サイト右上にある「Sign in」をクリック
+③　「Create an Account」をクリック
+④　必要事項の入力・チェックボックスにチェック・使用目的の解答などを行い、メール認証を経てアカウントを作成
+⑤　「API keys」をクリックしAPIキーを取得
+⑥　取得したAPIキーを```weather.py```のノード内の```self.api_key```にコピペし導入完了
+
+※OpenWearMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照
+　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)
 
 ### 実行例
 - 千葉県習志野市の現在の天気を確認したい場合  
