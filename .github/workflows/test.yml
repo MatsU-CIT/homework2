@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Set up ROS 2 workspace
       run: |
-        mkdir -p ~/ros2_ws/src
+        mkdir -p ~/ros2_ws/src/hw2
         rsync -av ./ ~/ros2_ws/src/hw2/homework2
     - name: Build and Test
       run: |
