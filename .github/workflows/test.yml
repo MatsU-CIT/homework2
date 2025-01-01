@@ -14,12 +14,41 @@ jobs:
       run: |
         mkdir -p ~/ros2_ws/src/hw2
         rsync -av ./ ~/ros2_ws/src/hw2/homework2
+    - name: Install Python3 and dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3-pip python3-colcon-common-extensions
+        python3 -m pip install -U setuptools colcon-ros
     - name: Build and Test
       shell: bash
       run: |
         source /opt/ros/humble/setup.bash
+        source ~/ros2_ws/install/setup.bash
+
         cd ~/ros2_ws
         colcon build --packages-select homework2
+
         source install/setup.bash
-        bash -xv src/hw2/homework2/homework2/test/test.bash ~
+
+        ros2 run homework2 weather_publisher &
+        NODE_PID=$!
+
+        sleep 5
+
+        echo "Listing available topics..."
+        ros2 topic list
+
+        echo "Waiting for weather info..."
+        RESULT=$(timeout 10 ros2 topic echo /weather_info --once)
+
+        if echo "$RESULT" | grep -q "指定地点の現在の天気は:"; then
+          echo "Weather node test passed."
+          kill $NODE_PID
+          exit 0
+        else
+          echo "Weather node test failed. Output was:"
+          echo "$RESULT"
+          kill $NODE_PID
+          exit 1
+        fi
 
