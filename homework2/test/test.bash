@@ -5,10 +5,8 @@ set -e
 source /opt/ros/humble/setup.bash
 source ~/ros2_ws/install/setup.bash
 
-# 必要なディレクトリへ移動
+# パッケージのビルド
 cd ~/ros2_ws
-
-# ビルド確認
 colcon build --packages-select homework2
 
 # ビルド後のワークスペースをソース
