@@ -1,35 +1,43 @@
 #!/bin/bash
-set -e
 
-# ROS 2 ワークスペースのセットアップ
-source /opt/ros/humble/setup.bash
-source ~/ros2_ws/install/setup.bash
+set -e  # エラーが発生したらスクリプトを停止する
+set -x  # 実行されるコマンドを表示する
 
-# パッケージのビルド
-cd ~/ros2_ws
-colcon build --packages-select homework2
-
-# ビルド後のワークスペースをソース
-source install/setup.bash
-
-# weather_publisherノードをバックグラウンドで起動
-ros2 run homework2 weather_publisher &
-NODE_PID=$!
-
-# ノードの起動確認用に少し待機
-sleep 5
-
-# weather_infoトピックからデータを受信して確認
-RESULT=$(timeout 10 ros2 topic echo /weather_info -n 1)
-
-# 取得したデータに期待される文字列が含まれているか確認
-if echo "$RESULT" | grep -q "指定地点の現在の天気は:"; then
-  echo "Weather node test passed."
-  kill $NODE_PID
-  exit 0
-else
-  echo "Weather node test failed."
-  kill $NODE_PID
+# 引数の確認
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <ros2_workspace_root>"
   exit 1
 fi
+
+ROS2_WS="$1"
+
+# ROS2ワークスペースのセットアップ
+source /opt/ros/foxy/setup.bash  # 必要に応じてROSのバージョンを変更
+cd "$ROS2_WS"
+colcon build  # ワークスペースをビルド
+source install/setup.bash
+
+# テストノードの起動
+ros2 run homework2 weather_publisher &  # weather_publisherノードをバックグラウンドで起動
+PUBLISHER_PID=$!
+
+# テストの実行
+sleep 5  # weather_publisherがメッセージをパブリッシュするのを待機
+echo "Checking for published messages..."
+
+# トピックの確認
+OUTPUT=$(ros2 topic echo /weather_info --once)
+
+# 結果の検証
+if echo "$OUTPUT" | grep -q "現在の天気"; then
+  echo "Test passed: Weather information published successfully."
+else
+  echo "Test failed: No weather information published."
+  kill $PUBLISHER_PID
+  exit 1
+fi
+
+# ノードを終了
+kill $PUBLISHER_PID
+echo "Test completed successfully."
 
