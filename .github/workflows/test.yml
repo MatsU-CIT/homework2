@@ -3,10 +3,15 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
+    container: ryuichiueda/ubuntu22.04-ros2:latest
     strategy:
       matrix:
         python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
     steps:
-    - uses: actions/checkout@v3
-    - name: All test
-      run: bash -xv ./test.bash
+    - uses: actions/checkout@v2
+    - name: build and test
+      run: |
+        cd ~/ros2_ws
+        colcon build --packages-select homework2
+        source install/setup.bash
+        bash -xv ./src/hw2/homework2/homework2/test/test.bash ~
