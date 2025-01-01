@@ -14,4 +14,4 @@ jobs:
         cd ~/ros2_ws
         colcon build --packages-select homework2
         source install/setup.bash
-        bash -xv ./src/hw2/homework2/homework2/test/test.bash ~
+        bash -xv src/hw2/homework2/homework2/test/test.bash ~
