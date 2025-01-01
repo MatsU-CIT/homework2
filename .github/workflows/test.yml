@@ -10,10 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up ROS 2 workspace
+      shell: bash
       run: |
         mkdir -p ~/ros2_ws/src/hw2
         rsync -av ./ ~/ros2_ws/src/hw2/homework2
     - name: Build and Test
+      shell: bash
       run: |
         source /opt/ros/humble/setup.bash
         cd ~/ros2_ws
