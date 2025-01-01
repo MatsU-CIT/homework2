@@ -2,68 +2,12 @@ name: test
 on: push
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container: ryuichiueda/ubuntu22.04-ros2:latest
-    strategy:
-      matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up ROS 2 workspace
-      shell: bash
-      run: |
-        # 必要なディレクトリ構造を作成
-        mkdir -p ~/ros2_ws/src/hw2
-        # ソースコードをROS 2ワークスペースに配置
-        rsync -av ./ ~/ros2_ws/src/hw2/homework2
-    - name: Install dependencies
-      run: |
-        # ROS 2 依存関係のインストール
-        sudo apt-get update
-        sudo apt-get install -y python3-pip python3-colcon-common-extensions
-        python3 -m pip install -U setuptools colcon-ros
-        # rosdep の初期化と依存関係のインストール
-        sudo rosdep init
-        rosdep update
-        rosdep install --from-paths ~/ros2_ws/src --ignore-src -r -y
-    - name: Build and Test
-      shell: bash
-      run: |
-        # ROS 2 環境のセットアップ
-        source /opt/ros/humble/setup.bash
-
-        # ワークスペースに移動
-        cd ~/ros2_ws
-
-        # パッケージのビルド
-        colcon build --packages-select homework2
-        # ビルド後のワークスペースをソース
-        source install/setup.bash
-
-        # weather_publisherノードをバックグラウンドで起動
-        ros2 run homework2 weather_publisher &
-        NODE_PID=$!
-
-        # ノードの起動確認用に少し待機
-        sleep 5
-
-        # トピックが存在することを確認
-        echo "Listing available topics..."
-        ros2 topic list
-
-        # weather_infoトピックからデータを受信して確認
-        echo "Waiting for weather info..."
-        RESULT=$(timeout 10 ros2 topic echo /weather_info --once)
-
-        # 取得したデータに期待される文字列が含まれているか確認
-        if echo "$RESULT" | grep -q "指定地点の現在の天気は:"; then
-          echo "Weather node test passed."
-          kill $NODE_PID
-          exit 0
-        else
-          echo "Weather node test failed. Output was:"
-          echo "$RESULT"
-          kill $NODE_PID
-          exit 1
-        fi
-
+      - uses: actions/checkout@v2
+      - name: build and test
+        run: |
+          rsync -av ./ /root/ros2_ws/src/hw2/homework2/
+          cd /root/ros2_ws
+          bash -xv ./src/hw2/homework2/test/test.bash /root
