@@ -9,17 +9,7 @@ jobs:
         python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Create required directories
-        run: |
-          mkdir -p /root/ros2_ws/src/hw2/homework2
-
-      - name: Sync source files
-        run: |
-          rsync -av ./ /root/ros2_ws/src/hw2/homework2/
-
-      - name: Build and test
+      - name: build and test
         run: |
           cd /root/ros2_ws
           bash -xv ./src/hw2/homework2/test/test.bash /root
-
