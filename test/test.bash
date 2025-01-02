@@ -9,4 +9,4 @@ source $dir/.bashrc
 timeout 10 ros2 launch homework2 talk_listen.launch.py > /tmp/mypkg.log
 
 cat /tmp/mypkg.log |
-grep '指定地点'
+grep 'yeah'
