@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: build and test
         run: |
-          rsync -av ./ ~/ros2_ws/src/hw2/homework2/
+          rsync -av ./ /root/ros2_ws/src/hw2/homework2/
           cd /root/ros2_ws
           bash -xv ./src/hw2/homework2/test/test.bash /root
