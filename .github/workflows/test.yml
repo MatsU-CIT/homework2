@@ -4,23 +4,13 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     container: ryuichiueda/ubuntu22.04-ros2:latest
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
     steps:
       - uses: actions/checkout@v2
-      - name: Setup environment variables
-        env:
-          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
-      - name: Install dependencies
-        run: |
-          apt-get update
-          apt-get install -y python3-colcon-common-extensions ros-${ROS_DISTRO}-rclpy ros-${ROS_DISTRO}-std-msgs
-          source /opt/ros/${ROS_DISTRO}/setup.bash
-      - name: Prepare workspace
+      - name: build and test
         run: |
           rsync -av ./ /root/ros2_ws/src/homework2/
-          chmod +x /root/ros2_ws/src/homework2/test/test.bash
-      - name: Build and test
-        run: |
           cd /root/ros2_ws
-          colcon build
-          source install/setup.bash
           bash -xv ./src/homework2/test/test.bash /root
