@@ -24,7 +24,7 @@ class WeatherPublisher(Node):
                 description = weather_data['weather'][0]['description']
                 temp = weather_data['main']['temp']
                 humidity = weather_data['main']['humidity']
-                return f'指定地点の現在の天気は: {description}, 温度は: {temp}°C, 湿度は: {humidity}% となっております。'
+                return f'指定地点の現在の天気は: {description}, 温度は: {temp}°C, 湿度は: {humidity}% となっております。yeah'
             else:
                 self.get_logger().error(f'Error fetching weather data: {response.status_code}')
                 return '天気情報の取得に失敗しました………'
