@@ -17,9 +17,5 @@ jobs:
           rsync -av ./ /root/ros2_ws/src/hw2/homework2/
       - name: Build and Test
         run: |
-          cd /root/ros2_ws
-          source /opt/ros/humble/setup.bash
-          colcon build --symlink-install --packages-select homework2
-          source install/setup.bash
-          bash -xv ./src/hw2/homework2/test/test.bash /root
-
+          # bashシェルを明示的に使用
+          bash -c "cd /root/ros2_ws && source /opt/ros/humble/setup.bash && colcon build --symlink-install --packages-select homework2 && source install/setup.bash && bash -xv ./src/hw2/homework2/test/test.bash /root"
