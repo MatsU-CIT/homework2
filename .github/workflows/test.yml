@@ -13,4 +13,4 @@ jobs:
         run: |
           rsync -av ./ /root/ros2_ws/src/hw2/homework2/
           cd /root/ros2_ws
-          bash -xv ./src/hw2/homework2/test/test.bash /root
+          bash -xv ./src/hw2/homework2/test/test.bash /roo
