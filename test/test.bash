@@ -1,7 +1,7 @@
 #!/bin/bash
 
-set -e  # エラーが発生したらスクリプトを停止
-set -x  # 実行されるコマンドを表示
+set -e  # エラーが発生したらスクリプトを停止する
+set -x  # 実行されるコマンドを表示する
 
 # 引数の確認
 if [ "$#" -ne 1 ]; then
@@ -11,6 +11,8 @@ fi
 
 ROS2_WS="$1"
 
+# ROS2ワークスペースのセットアップ
+source /opt/ros/foxy/setup.bash  # 必要に応じてROSのバージョンを変更
 cd "$ROS2_WS"
 colcon build  # ワークスペースをビルド
 source install/setup.bash
