@@ -12,7 +12,7 @@ fi
 ROS2_WS="$1"
 
 # ROS2ワークスペースのセットアップ
-source ~/ros2_ws/src/hw2/homework2/setup.bash  # 必要に応じてROSのバージョンを変更
+source /opt/ros/foxy/setup.bash  # 必要に応じてROSのバージョンを変更
 cd "$ROS2_WS"
 colcon build  # ワークスペースをビルド
 source install/setup.bash
