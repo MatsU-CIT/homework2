@@ -12,13 +12,7 @@ class WeatherPublisher(Node):
         self.publisher_ = self.create_publisher(String, 'weather_info', 10)
         timer_period = 1.0  # 1秒ごとに天気情報を表示
         self.timer = self.create_timer(timer_period, self.publish_weather_info)
-
-        # 環境変数からAPIキーを取得
-        self.api_key = os.getenv('OPENWEATHER_API_KEY')
-        if not self.api_key:
-            self.get_logger().error('APIキーが設定されていません。環境変数OPENWEATHER_API_KEYを確認してください。')
-            raise ValueError('APIキーが見つかりません')
-        #self.api_key = '387c1a9825674184050a1f5a269bc9cb'  # OpenWeatherMapから取得したAPIキーはここに入力
+        self.api_key = '387c1a9825674184050a1f5a269bc9cb'  # OpenWeatherMapから取得したAPIキーはここに入力
         self.location = 'Narashino,JP'  # 天気を確認したい場所の地名をここで指定
 
     def fetch_weather_info(self):
