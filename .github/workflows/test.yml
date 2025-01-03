@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-22.04
     container: ryuichiueda/ubuntu22.04-ros2:latest
     env:
-      ROS_DISTRO: humble
+      ROS_DISTRO: humble  # ROS2のディストリビューション名を指定
     steps:
       - uses: actions/checkout@v2
       - name: Setup ROS2 APT repository
@@ -24,6 +24,7 @@ jobs:
         run: |
           apt-get install -y ros-${ROS_DISTRO}-rclpy ros-${ROS_DISTRO}-std-msgs
       - name: Build and test
+        shell: bash  # ここで bash を指定
         run: |
           rsync -av ./ /root/ros2_ws/src/homework2/
           cd /root/ros2_ws
