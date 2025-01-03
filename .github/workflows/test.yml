@@ -4,11 +4,18 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     container: ryuichiueda/ubuntu22.04-ros2:latest
+    env:
+      ROS_DISTRO: humble
     steps:
       - uses: actions/checkout@v2
+      - name: Setup ROS2 APT repository
+        run: |
+          apt-get update && apt-get install -y curl gnupg2 lsb-release
+          curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+          echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list
+          apt-get update
       - name: Install Python3 and dependencies
         run: |
-          apt-get update
           apt-get install -y python3 python3-pip python3-colcon-common-extensions
           ln -sf /usr/bin/python3 /usr/bin/python
       - name: Set COLCON_PYTHON_EXECUTABLE
@@ -23,8 +30,4 @@ jobs:
           colcon build
           source install/setup.bash
           bash -xv ./src/homework2/test/test.bash /root
-      - name: Print environment variables
-        run: printenv
-      - name: Check Python3 executable
-        run: which python3
 
