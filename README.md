@@ -28,7 +28,11 @@
 ```source ~/.bashrc```  
 ③　同じディレクトリで```ros2 run homework2 weather```で実行  
 
-# テスト環境
+## 必要なソフトウェア
+- Python
+  - テスト済みバージョン: 3.7~3.11
+
+## テスト環境
 - Ubuntu 22.04 LTS
 
 ## ライセンス
