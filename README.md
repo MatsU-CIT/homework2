@@ -3,7 +3,7 @@
 
 # ROS2パッケージ-世界各地の天気情報
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![test]()]()
+[![test]([![test](https://github.com/MatsU-CIT/homework2/actions/workflows/test.yml/badge.svg)](https://github.com/MatsU-CIT/homework2/actions/workflows/test.yml))]([![test](https://github.com/MatsU-CIT/homework2/actions/workflows/test.yml/badge.svg)](https://github.com/MatsU-CIT/homework2/actions/workflows/test.yml))
 
 
 ## 使い方-世界各地の天気情報
