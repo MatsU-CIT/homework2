@@ -20,7 +20,7 @@
 ※OpenWearMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
 　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)  
 
-### 実行
+### 実行例
 - 千葉県習志野市の現在の天気を確認したい場合  
 ①　```weather.py```内の```self.location```に```Narashino,JP```と入力  
 ② 　ワークスペースのディレクトリにてビルド  
