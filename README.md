@@ -1,7 +1,7 @@
 # homework2
 23C1134_ロボットシステム学課題2提出用
 
-# 課題ノード(weather.py)
+# ROS2パッケージ-世界各地の天気情報
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![test]()]()
 
@@ -21,13 +21,13 @@
 ※OpenWearMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
 　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)  
 
-### 実行例
+### 実行
 - 千葉県習志野市の現在の天気を確認したい場合  
 ①　```weather.py```内の```self.location```に```Narashino,JP```と入力  
 ② 　ワークスペースのディレクトリにてビルド  
 ```colcon build```  
 ```source ~/.bashrc```  
-③　```ros2 run homework2 weather```で実行  
+③　同じディレクトリで```ros2 run homework2 weather```で実行  
 
 # テスト環境
 - Ubuntu 22.04 LTS
