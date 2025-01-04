@@ -1,5 +1,5 @@
 # homework2
-23C1134_ロボットシステム学課題2提出用
+23C1134_ロボットシステム学課題提出用
 
 # ROS2パッケージ-世界各地の天気情報
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
