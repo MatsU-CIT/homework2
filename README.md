@@ -8,13 +8,13 @@
 ## 概要
 - 世界中の都市における現在の天気を確認することが出来るROS2パッケージです。
 
-## ノード:weather.py
+## ノード:weather
 世界各地の地域を指定しておくと、その地域の現在の天気情報を1秒毎にトピックにパブリッシュします。
 
 ## トピック:weather_info
 weather.pyからパブリッシュされた、以下の情報を持ちます。  
 ```
-受信した天気情報は次の通りです: "{msg.data}"
+指定地点の現在の天気は: {description}, 温度は: {temp}°C, 湿度は: {humidity}% となっております。yeah
 ```
 
 ## 実行
@@ -58,7 +58,7 @@ data: '指定地点の現在の天気は: 曇りがち, 温度は: 7°C, 湿度�
 data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿度は: 100% となっております。yeah'
 ```
 
-### APIキーの導入方法
+## APIキーの導入方法
 ①
 下記のリンクより「OpenWeatherMap」のサイトにアクセス  
 　　- [https://openweathermap.org/](https://openweathermap.org/)  
@@ -75,6 +75,9 @@ data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿�
 
 ※OpenWeatherMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
 　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)  
+
+##注意点
+listener.py及びtalk_listen.launch.pyはテスト用のノードとなっております。  
 
 ## テスト済み環境
 - Ubuntu 22.04 LTS
