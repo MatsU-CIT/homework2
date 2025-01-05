@@ -25,7 +25,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-          'weather = homework2.weather:main'
+          'weather = homework2.weather:main',
         ],
     },
 )
