@@ -26,7 +26,7 @@ setup(
     entry_points={
         'console_scripts': [
           'weather = homework2.weather:main',
-          'listener = homework2.weather:main',
+          'listener = homework2.listener:main',
         ],
     },
 )
