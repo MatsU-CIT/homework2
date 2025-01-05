@@ -37,7 +37,6 @@ class WeatherPublisher(Node):
         msg = String()
         msg.data = weather_info
         self.publisher_.publish(msg)
-        self.get_logger().info(f'Published: {weather_info}')
 
 def main(args=None):
     rclpy.init(args=args)
