@@ -76,7 +76,7 @@ data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿�
 ※OpenWeatherMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
 　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)  
 
-##注意点
+## 注意点
 listener.py及びtalk_listen.launch.pyはテスト用のノードとなっております。  
 
 ## テスト済み環境
