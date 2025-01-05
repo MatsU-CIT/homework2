@@ -19,13 +19,22 @@ weather.pyからパブリッシュされた、以下の情報を持ちます。
 - 千葉県習志野市の現在の天気を確認したい場合  
 ①　```weather.py```内の```self.location```に```Narashino,JP```と入力  
 ② 　ワークスペースのディレクトリにてビルド  
-```colcon build```  
-```source ~/.bashrc```  
-③　```ros2 run homework2 weather```で実行  
+```
+colcon build
+```  
+```
+source ~/.bashrc
+```  
+③　```
+ros2 run homework2 weather
+```で実行  
 ④トピックの内容は以下のコマンドで確認可能です。  
-```ros2 topic echo weather_info```  
+```
+ros2 topic echo weather_info
+```  
 トピック内容例
-```data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿度は: 100% となっております。yeah'
+```
+data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿度は: 100% となっております。yeah'
 ---
 data: '指定地点の現在の天気は: 曇りがち, 温度は: 7°C, 湿度は: 100% となっております。yeah'
 ---
@@ -33,7 +42,8 @@ data: '指定地点の現在の天気は: 曇りがち, 温度は: 7°C, 湿度�
 ---
 data: '指定地点の現在の天気は: 曇りがち, 温度は: 7°C, 湿度は: 100% となっております。yeah'
 ---
-data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿度は: 100% となっております。yeah'```
+data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿度は: 100% となっております。yeah'
+```
 
 ### APIキーの導入方法
 ①　下記のリンクより「OpenWeatherMap」のサイトにアクセス  
@@ -44,7 +54,7 @@ data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿�
 ⑤　「API keys」をクリックしAPIキーを取得  
 ⑥　取得したAPIキーを```weather.py```のノード内の```self.api_key```にコピペし導入完了  
 
-※OpenWearMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
+※OpenWeatherMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
 　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)  
 
 ## テスト済み環境
