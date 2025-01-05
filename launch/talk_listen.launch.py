@@ -8,9 +8,9 @@ import launch_ros.actions
 
 def generate_launch_description():
 
-    weather = launch_ros.actions.Node(
+    weather_publisher = launch_ros.actions.Node(
         package='homework2',
-        executable='weather',
+        executable='weather_publisher',
         output='screen',
     )
     listener = launch_ros.actions.Node(
