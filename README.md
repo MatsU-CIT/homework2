@@ -8,25 +8,34 @@
 ## 使い方:世界各地の天気情報
 - 世界中の都市における現在の天気を確認することが出来るROS2パッケージです。
 
-### APIキーの導入方法
-①　下記のリンクより「OpenWeatherMap」のサイトにアクセス  
-　　- [https://openweathermap.org/](https://openweathermap.org/)  
-②　サイト右上にある「Sign in」をクリック  
-③　「Create an Account」をクリック  
-④　必要事項の入力・チェックボックスにチェック・使用目的の解答などを行い、メール認証を経てアカウントを作成  
-⑤　「API keys」をクリックしAPIキーを取得  
-⑥　取得したAPIキーを```weather.py```のノード内の```self.api_key```にコピペし導入完了  
-  
-※OpenWearMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
-　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)  
+##ノード:weather.py
+世界各地の地域を指定しておくと、その地域の現在の天気情報を1秒毎にトピックにパブリッシュします。
 
-### 実行
+##トピック:listener.py
+weather.pyからパブリッシュされた、以下の情報を持ちます。
+```受信した天気情報は次の通りです: "{msg.data}"```
+
+## 実行
 - 千葉県習志野市の現在の天気を確認したい場合  
 ①　```weather.py```内の```self.location```に```Narashino,JP```と入力  
 ② 　ワークスペースのディレクトリにてビルド  
 ```colcon build```  
 ```source ~/.bashrc```  
 ③　```ros2 run homework2 weather```で実行  
+④トピックの内容は以下のコマンドで確認可能です。  
+```ros2 topic echo weather_info```
+
+### APIキーの導入方法
+①　下記のリンクより「OpenWeatherMap」のサイトにアクセス
+　　- [https://openweathermap.org/](https://openweathermap.org/)
+②　サイト右上にある「Sign in」をクリック
+③　「Create an Account」をクリック
+④　必要事項の入力・チェックボックスにチェック・使用目的の解答などを行い、メール認証を経てアカウントを作成
+⑤　「API keys」をクリックしAPIキーを取得
+⑥　取得したAPIキーを```weather.py```のノード内の```self.api_key```にコピペし導入完了
+
+※OpenWearMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照
+　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)
 
 ## テスト済み環境
 - Ubuntu 22.04 LTS
