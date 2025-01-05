@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 Yusuke Matsumoto s23c1134bg@s.chibakoudai.jp
+# SPDX-FileCopyrightText: 2025 Yusuke Matsumoto s23c1134bg@s.chibakoudai.jp
 # SPDX-License-Identifier: BSD-3-Clause
 from setuptools import setup
 import os
@@ -26,6 +26,7 @@ setup(
     entry_points={
         'console_scripts': [
           'weather = homework2.weather:main',
+          'listener = homework2.weather:main',
         ],
     },
 )
