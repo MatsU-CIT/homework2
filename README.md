@@ -19,7 +19,8 @@ weather.pyからパブリッシュされた、以下の情報を持ちます。
 
 ## 実行
 - 千葉県習志野市の現在の天気を確認したい場合  
-①　```weather.py```内の```self.location```に```Narashino,JP```
+①
+```weather.py```内の```self.location```に```Narashino,JP```
 と入力  
 
 ②
@@ -37,7 +38,8 @@ ros2 run homework2 weather
 ```
 で実行  
 
-④トピックの内容は以下のコマンドで確認可能です。  
+④
+トピックの内容は以下のコマンドで確認可能です。  
 ```
 ros2 topic echo weather_info
 ```
@@ -57,13 +59,19 @@ data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿�
 ```
 
 ### APIキーの導入方法
-①　下記のリンクより「OpenWeatherMap」のサイトにアクセス  
+①
+下記のリンクより「OpenWeatherMap」のサイトにアクセス  
 　　- [https://openweathermap.org/](https://openweathermap.org/)  
-②　サイト右上にある「Sign in」をクリック  
-③　「Create an Account」をクリック  
-④　必要事項の入力・チェックボックスにチェック・使用目的の解答などを行い、メール認証を経てアカウントを作成  
-⑤　「API keys」をクリックしAPIキーを取得  
-⑥　取得したAPIキーを```weather.py```のノード内の```self.api_key```にコピペし導入完了  
+②
+サイト右上にある「Sign in」をクリック  
+③
+「Create an Account」をクリック  
+④
+必要事項の入力・チェックボックスにチェック・使用目的の解答などを行い、メール認証を経てアカウントを作成  
+⑤
+「API keys」をクリックしAPIキーを取得  
+⑥
+取得したAPIキーを```weather.py```のノード内の```self.api_key```にコピペし導入完了  
 
 ※OpenWeatherMapにおけるアカウント作成に関する詳しい情報は以下のサイト参照  
 　　- [https://auto-worker.com/blog/?p=1612](https://auto-worker.com/blog/?p=1612)  
@@ -71,7 +79,7 @@ data: '指定地点の現在の天気は: 曇りがち, 温度は: 6.38°C, 湿�
 ## テスト済み環境
 - Ubuntu 22.04 LTS
  - ROS2 Humble(GitHub Actions)
-- Ubuntu 20.04 LTS
+- Ubuntu 24.04 LTS
  - ROS2 Jazzy(開発環境)
 ## ライセンス
 - このソフトウェアパッケージは，3条項BSDライセンスの下，再頒布および使用が許可されます．
