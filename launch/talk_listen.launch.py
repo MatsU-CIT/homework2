@@ -13,10 +13,5 @@ def generate_launch_description():
         executable='weather',
         output='screen',
     )
-    listener = launch_ros.actions.Node(
-        package='homework2',
-        executable='listener',
-        output='screen',
-    )
 
     return launch.LaunchDescription([weather, listener])
