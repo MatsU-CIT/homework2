@@ -20,6 +20,7 @@ weather.pyからパブリッシュされた、以下の情報を持ちます。
 ## 実行
 - 千葉県習志野市の現在の天気を確認したい場合  
 ①
+ノードの設定  
 ```weather.py```内の```self.location```に```Narashino,JP```
 と入力  
 
@@ -33,10 +34,10 @@ colcon build
 source ~/.bashrc
 ```
 ③
+以下のコマンドにて実行  
 ```
 ros2 run homework2 weather
 ```
-で実行  
 
 ④
 トピックの内容は以下のコマンドで確認可能です。  
